@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me — Pari</title>
+  
+  <style>
+    /* --- CYBERPUNK BENTO + FORMAL SPEECH THEME --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0512 !important;
+      /* Dynamic Cyber Glow Background */
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(168, 85, 247, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(217, 70, 239, 0.08) 0%, transparent 60%);
+      background-attachment: fixed;
+      color: #e2d9f3;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 15px;
+    }
+
+    .wrapper {
+      max-width: 920px;
+      width: 100%;
+    }
+
+    .header {
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .title-glow {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+    }
+
+    .status-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+    }
+
+    /* BENTO GRID LAYOUT */
+    .bento-container {
+      display: grid;
+      grid-template-columns: 230px 1fr 270px;
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(18, 10, 28, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(168, 85, 247, 0.5);
+      box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.3);
+    }
+
+    .card h2, .card h3 {
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-profile {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 28px 10px;
+    }
+
+    .card-stats {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .card-story {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
+
+    .card-interest {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .card-stack {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    /* ROTATING LED AVATAR WITH GAMING NEON */
+    .avatar-led {
+      position: relative;
+      width: 115px;
+      height: 115px;
+      border-radius: 50%;
+      padding: 3.5px;
+      background: linear-gradient(45deg, #a855f7, #06b6d4, #ec4899, #a855f7);
+      background-size: 300% 300%;
+      animation: spin-glow 4s ease infinite;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: #0b0512;
+      display: block;
+    }
+
+    @keyframes spin-glow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* QUICK STATS GAMING LIST */
+    .stats-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stats-list li {
+      font-size: 0.88rem;
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.15);
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #e9d5ff;
+    }
+
+    .stats-list li span {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    /* --- STYLE KHUSUS TEKS PIDATO FORMAL DENGAN SCROLLBAR --- */
+    .speech-box {
+      font-family: 'Georgia', 'Times New Roman', Times, serif;
+      font-size: 0.96rem;
+      line-height: 1.8;
+      color: #ffffff;
+      text-align: justify;
+
+      max-height: 280px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .speech-box::-webkit-scrollbar {
+      width: 6px;
+    }
+    .speech-box::-webkit-scrollbar-track {
+      background: rgba(18, 10, 28, 0.5);
+      border-radius: 4px;
+    }
+    .speech-box::-webkit-scrollbar-thumb {
+      background: rgba(168, 85, 247, 0.4);
+      border-radius: 4px;
+    }
+    .speech-box::-webkit-scrollbar-thumb:hover {
+      background: rgba(168, 85, 247, 0.8);
+    }
+
+    .speech-salam {
+      color: #ffffff;
+      border-bottom: 1px dashed rgba(168, 85, 247, 0.35);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    .speech-body {
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    /* TOMBOL INLINE */
+    .btn-kenalan-inline {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 6px;
+      padding: 3px 10px;
+      background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+      color: #ffffff;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      vertical-align: middle;
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+      transition: all 0.2s ease;
+    }
+    .btn-kenalan-inline:hover { transform: scale(1.05); }
+
+    .btn-mantan-inline {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 6px;
+      padding: 3px 10px;
+      background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+      color: #ffffff;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      vertical-align: middle;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+      transition: all 0.2s ease;
+    }
+    .btn-mantan-inline:hover { transform: scale(1.05); }
+
+    /* NEON BADGES & TECH STACK */
+    .badge-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      font-size: 0.78rem; font-weight: 500;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      padding: 5px 10px; border-radius: 8px; color: #f3e8ff;
+    }
+    .stack-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .stack-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 8px 10px; border-radius: 8px; text-align: center;
+      font-size: 0.78rem; font-weight: 600; color: #cbd5e1;
+    }
+
+    .cta-wrapper { margin-top: 20px; display: flex; gap: 12px; }
+    .btn-back, .btn-discord {
+      padding: 10px 20px; border-radius: 10px; text-decoration: none;
+      font-size: 0.88rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-back { background: rgba(255, 255, 255, 0.05); color: #e2d9f3; border: 1px solid rgba(255, 255, 255, 0.12); }
+    .btn-discord { background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%); color: #ffffff; }
+
+    /* MODAL UMUM */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(11, 5, 18, 0.85); backdrop-filter: blur(8px);
+      display: none; justify-content: center; align-items: center; z-index: 999;
+    }
+    .modal-content {
+      background: #190e26; border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 16px; padding: 25px; max-width: 420px; width: 90%;
+    }
+    .modal-header { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+    .close-btn { background: none; border: none; color: #a855f7; font-size: 1.4rem; cursor: pointer; }
+
+    /* --- EFEK KHUSUS MODAL ROMANCE (FOTO BERGELANTUNG, BURUNG, & LOVE) --- */
+    .modal-content-romance {
+      background: #180922;
+      border: 2px solid rgba(236, 72, 153, 0.5);
+      border-radius: 20px;
+      padding: 30px 20px 20px 20px;
+      max-width: 450px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(236, 72, 153, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Tali Gantung di Atas Kotak */
+    .hanging-rope-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: space-around;
+      pointer-events: none;
+    }
+    .rope {
+      width: 2px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.4);
+      position: relative;
+    }
+
+    /* Foto Bergelantung */
+    .hanging-photos-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 35px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .hanging-photo-card {
+      width: 90px;
+      height: 110px;
+      background: #fff;
+      padding: 6px 6px 20px 6px;
+      border-radius: 4px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transform-origin: top center;
+      animation: swing 3s ease-in-out infinite alternate;
+    }
+    .hanging-photo-card:nth-child(2) { animation-delay: 1s; }
+    .hanging-photo-card:nth-child(3) { animation-delay: 0.5s; }
+
+    @keyframes swing {
+      0% { transform: rotate(3deg); }
+      100% { transform: rotate(-3deg); }
+    }
+
+    .hanging-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Efek Burung Terbang ke Kiri */
+    .flying-bird {
+      position: absolute;
+      top: 30px;
+      right: -50px;
+      font-size: 1.5rem;
+      animation: flyLeft 6s linear infinite;
+      z-index: 5;
+      opacity: 0.7;
+    }
+    @keyframes flyLeft {
+      0% { transform: translateX(0) translateY(0); right: -50px; }
+      50% { transform: translateX(-250px) translateY(-10px); }
+      100% { transform: translateX(-500px) translateY(0); right: 100%; }
+    }
+
+    /* Efek Love Terbang dari Bawah ke Atas */
+    .floating-love {
+      position: absolute;
+      bottom: -20px;
+      color: #ec4899;
+      font-size: 1.2rem;
+      animation: floatUp 4s ease-in infinite;
+      z-index: 1;
+      opacity: 0.8;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.6); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-350px) scale(1.3); opacity: 0; }
+    }
+
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 0.82rem; color: #d8b4fe; margin-bottom: 5px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 10px; background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 8px; color: #fff; font-size: 0.9rem; outline: none;
+    }
+    .btn-submit {
+      width: 100%; padding: 10px; background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+      color: #fff; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .bento-container { grid-template-columns: 1fr; }
+      .card-story, .card-interest, .card-stack { grid-column: 1; grid-row: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="wrapper">
+    
+    <header class="header">
+      <h1 class="title-glow">About Me</h1>
+      <span class="status-tag">🟢 Online / Building</span>
+    </header>
+
+    <div class="bento-container">
+
+      <!-- 1. Profile Avatar -->
+      <div class="card card-profile">
+        <div class="avatar-led">
+          <img src="assets/profile.jpeg.jpeg" alt="Pari Avatar" class="avatar-img">
+        </div>
+      </div>
+
+      <!-- 2. Quick Stats -->
+      <div class="card card-stats">
+        <h3>⚡ Quick Stats</h3>
+        <ul class="stats-list">
+          <li>Age <span>17 y.o</span></li>
+          <li>Location <span>Indonesia 🇮🇩</span></li>
+          <li>Experience <span>Beginner</span></li>
+        </ul>
+      </div>
+
+      <!-- 3. My Story -->
+      <div class="card card-story">
+        <h2>My story</h2>
+        <div class="speech-box">
+          <p class="speech-salam">
+            haii semua perkenalkan nama aku fakhrii rizq ananda akrab di panggil pari,atau kalian punya nama panggilan lain yg cocok? haha
+          </p>
+          <p class="speech-body">
+            saya membuat web ini bertujuan uji coba kemampuan aku sendiri sih,ternyata tidak sesusah yang aku bayangin
+          </p>
+          <p class="speech-body">
+            oiya btw welcome buat yang ngunjungin web ini ya! bole kenalan dulu gasi kita? biar enjoy aja gitu,kalau mau kenalan silahkan click tombol di samping ini 👉
+            <button class="btn-kenalan-inline" onclick="openForm()">✨ Boleh, Kenalan Yuk!</button>
+          </p>
+          <p class="speech-body">
+            oiya ngomong2 selain hobi aku coding kya membuat projects seperti saat ini,aku jg suka ngegame loh,yakali aku coding terus bisa gila dong haha..
+          </p>
+          <p class="speech-body">"main game apa aja pari?"</p>
+          <p class="speech-body">
+            banyak sih,tapi untuk sekarang aku lg excited sma game dark souls 3 sumpah ini game sbnrnya nyebelin tapi candu guys ga boong aku,selain dark souls 3 sih ada roblox,tapi aku roblox jarang,aku hnya mau main roblox ketika di ajak mantan ku aja sih,ANJAY MANTAN LOL,tpi serius guys aku punya mantan,GATAU KENAPA SUSAH BGT DI LUPAIN,mau ku jelasin ga ciri ciri dia? dan kenapa aku susah bgt buat lepasin/lupain?
+          </p>
+          <p class="speech-body">
+            ya pikir aja gasi guys,kalau kalian punya cwe cakep bgt kaya gini 
+            <button class="btn-mantan-inline" onclick="openRomanceModal()">✨ photo card </button>
+          </p>
+          <p class="speech-body">
+            CAKEP KAN GUYSjadi ya pikir aja cara mup on nya wkwk,dia jg slah stu tempat sgla cerita aku guys,karna ya seblm nya aku cmn bisa curhat di catatan aja si,tapi setelah ada dia lebih oke aja
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. Interest -->
+      <div class="card card-interest">
+        <h3>🔥 Interest</h3>
+        <div class="badge-group">
+          <span class="badge">🖥️ Server Dev</span>
+          <span class="badge">🎮 Gaming</span>
+          <span class="badge">🐧 Linux & Termux</span>
+          <span class="badge">🤖 Discord Bots</span>
+          <span class="badge">🛡️ Cybersecurity</span>
+        </div>
+      </div>
+
+      <!-- 5. Tech Stack -->
+      <div class="card card-stack">
+        <h3>🛠️ Tech Stack</h3>
+        <div class="stack-grid">
+          <div class="stack-item">Node.js</div>
+          <div class="stack-item">Python</div>
+          <div class="stack-item">Minecraft</div>
+          <div class="stack-item">Discord API</div>
+          <div class="stack-item">HTML / CSS</div>
+          <div class="stack-item">Linux / Bash</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cta-wrapper">
+      <a href="halaman2.html" class="btn-back">← Kembali ke Menu</a>
+      <a href="https://discord.com" target="_blank" class="btn-discord">Connect on Discord</a>
+    </div>
+
+  </main>
+
+  <!-- POPUP FORM KENALAN -->
+  <div class="modal-overlay" id="formModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>🤝 Form Kenalan Sama Pari</span>
+        <button class="close-btn" onclick="closeForm()">✕</button>
+      </div>
+      <form action="https://formspree.io/f/mgaodjbr" method="POST">
+        <div class="form-group">
+          <label>Nama Kamu / Nama Panggilan:</label>
+          <input type="text" name="nama" placeholder="Contoh: Alex" required>
+        </div>
+        <div class="form-group">
+          <label>Siapanya Pari nih?</label>
+          <select name="hubungan" style="background:#13091b; color:#fff;">
+            <option value="Temen Sekolah">Temen Sekolah</option>
+            <option value="Temen Discord/Gaming">Temen Discord / sosmed</option>
+            <option value="Tamu Web">Tamu Nyasar yang Keren</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pesan / Salam buat Pari:</label>
+          <textarea name="pesan" rows="3" placeholder="Tulis sesuatu di sini..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">🚀 Kirim ke Pari</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- POPUP MODAL ROMANCE (FOTO BERGELANTUNG, BURUNG, LOVE, & LAGU) -->
+  <div class="modal-overlay" id="romanceModal">
+    <div class="modal-content-romance" id="romanceBox">
+      
+      <!-- Efek Burung Terbang ke Kiri -->
+      <div class="flying-bird">🕊️</div>
+
+      <!-- Tali & Foto Bergelantung di Atas -->
+      <div class="hanging-rope-container">
+        <div class="rope"></div>
+        <div class="rope"></div>
+        <div class="rope"></div>
+      </div>
+
+      <div class="modal-header-romance" style="display:flex; justify-content:space-between; align-items:center; position:relative; z-index:5;">
+        <span style="color:#f472b6; font-weight:700;">💖 Memory Gallery</span>
+        <button class="close-btn" onclick="closeRomanceModal()">✕</button>
+      </div>
+
+      <!-- Frame Foto Bergelantung -->
+      <div class="hanging-photos-wrapper">
+        <div class="hanging-photo-card"><img src="assets/mantan1.jpg" alt="Mantan 1"></div>
+        <div class="hanging-photo-card"><img src="assets/mantan2.jpg" alt="Mantan 2"></div>
+        <div class="hanging-photo-card"><img src="assets/mantan3.jpg" alt="Mantan 3"></div>
+      </div>
+
+      <p class="romance-caption" style="position:relative; z-index:5; margin-top: 15px;">"MBG PARI NIE BOZZZ" 💭</p>
+    </div>
+  </div>
+
+  <!-- AUDIO LAGU ROMANCE -->
+  <audio id="bgSong" src="assets/lagu.mp3" preload="auto"></audio>
+
+  <script>
+    function openForm() { document.getElementById('formModal').style.display = 'flex'; }
+    function closeForm() { document.getElementById('formModal').style.display = 'none'; }
+
+    let loveInterval = null;
+
+    function openRomanceModal() {
+      document.getElementById('romanceModal').style.display = 'flex';
+
+      // Putar Lagu Sempurna
+      const song = document.getElementById('bgSong');
+      song.currentTime = 0;
+      song.play().catch(err => console.log("Audio diblokir browser:", err));
+
+      // Munculkan Efek Love Terbang Terus Menerus
+      const romanceBox = document.getElementById('romanceBox');
+      loveInterval = setInterval(() => {
+        const love = document.createElement('div');
+        love.classList.add('floating-love');
+        love.innerHTML = '❤️';
+        love.style.left = Math.random() * 85 + '%';
+        love.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        romanceBox.appendChild(love);
+
+        // Hapus elemen love setelah animasinya selesai agar memori aman
+        setTimeout(() => { love.remove(); }, 4000);
+      }, 400);
+    }
+
+    function closeRomanceModal() {
+      document.getElementById('romanceModal').style.display = 'none';
+
+      // Matikan Lagu
+      const song = document.getElementById('bgSong');
+      song.pause();
+      song.currentTime = 0;
+
+      // Hentikan Love Terbang
+      if (loveInterval) {
+        clearInterval(loveInterval);
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+/* --- RESET BASE --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #13091b; /* Deep Purple Dark Background */
+  color: #e2d9f3;
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+}
+
+.wrapper {
+  max-width: 900px;
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.title-glow {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f3e8ff;
+  text-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+/* BENTO GRID LAYOUT */
+.bento-container {
+  display: grid;
+  grid-template-columns: 220px 1fr 260px;
+  gap: 15px;
+}
+
+.card {
+  background: rgba(25, 14, 38, 0.85);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.card h2, .card h3 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.card-profile {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 10px;
+}
+
+.card-stats {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.card-story {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.card-interest {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.card-stack {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* ROTATING LED AVATAR */
+.avatar-led {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(0deg, #a855f7, #3b82f6, #a855f7);
+  animation: spin 4s linear infinite;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #13091b;
+  display: block;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* QUICK STATS */
+.stats-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stats-list li {
+  font-size: 0.9rem;
+  background: rgba(168, 85, 247, 0.1);
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* STORY CONTENT */
+.story-content p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #c0b3d7;
+  margin-bottom: 10px;
+}
+
+/* BADGES */
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.badge {
+  font-size: 0.75rem;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  padding: 4px 8px;
+  border-radius: 15px;
+  color: #e9d5ff;
+}
+
+/* TECH STACK */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.stack-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+/* BUTTONS */
+.cta-wrapper {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-back, .btn-discord {
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btn-back {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2d9f3;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-discord {
+  background: #5865f2;
+  color: #fff;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .bento-container {
+    grid-template-columns: 1fr;
+  }
+  .card-story, .card-interest, .card-stack {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}

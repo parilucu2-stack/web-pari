@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personally Pari - Featured Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #120b1f;
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(112, 26, 117, 0.3) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(76, 29, 149, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(88, 28, 135, 0.25) 0%, transparent 50%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Motif Halus */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0 25px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .nav-brand {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .nav-brand:hover {
+            color: #c084fc;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #c084fc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: #e9d5ff;
+            transform: translateX(-4px);
+        }
+
+        /* HEADER JUDUL */
+        .section-header {
+            margin-bottom: 36px;
+        }
+
+        .section-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #f8fafc;
+            letter-spacing: 0.5px;
+        }
+
+        .section-header p {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 6px;
+        }
+
+        /* GRID PROYEK */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: rgba(30, 19, 48, 0.65);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(192, 132, 252, 0.6);
+            box-shadow: 0 12px 30px rgba(147, 51, 234, 0.25);
+            background: rgba(45, 27, 72, 0.85);
+        }
+
+        .project-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 8px;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* TECH BADGES */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .badge {
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(192, 132, 252, 0.25);
+            color: #e9d5ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 50px;
+            padding-bottom: 10px;
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+            z-index: 2;
+        }
+
+        footer span {
+            color: #cbd5e1;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <a href="index.html" class="nav-brand">P</a>
+            <a href="halaman2.html" class="back-btn">&larr; Kembali ke Dashboard</a>
+        </nav>
+
+        <!-- HEADER SECTION -->
+        <div class="section-header">
+            <h1>FEATURED PROJECTS</h1>
+            <p>Eksplorasi proyek pengembangan server, manajemen infrastruktur game, dan eksperimen teknologi.</p>
+        </div>
+
+        <!-- GRID DAFTAR PROYEK -->
+        <div class="projects-grid">
+            
+            <!-- PROYEK 1 -->
+            <div class="project-card">
+                <div>
+                    <div class="project-icon">🐧</div>
+                    <h2 class="project-title">Automated Termux Server Stack</h2>
+                    <p class="project-desc">Skrip otomasisasi dan konfigurasi lingkungan server Linux di perangkat mobile menggunakan Termux & PRoot untuk deployment service ringan secara efisien.</p>
+                </div>
+                <div class="tech-stack">
+                    <span class="badge">Linux / Termux</span>
+                    <span class="badge">Bash Script</span>
+                    <span class="badge">PRoot Ubuntu</span>
+                </div>
+            </div>
+
+            <!-- PROYEK 2 -->
+            <div class="project-card">
+                <div>
+                    <div class="project-icon">🎮</div>
+                    <h2 class="project-title">Minecraft & Discord Server Setup</h2>
+                    <p class="project-desc">Konfigurasi dedicated game server Minecraft berbasis custom plugins, terhubung langsung dengan Discord Bot untuk sistem notifikasi live status & manajemen pemain.</p>
+                </div>
+                <div class="tech-stack">
+                    <span class="badge">Game Server</span>
+                    <span class="badge">Minecraft</span>
+                    <span class="badge">Discord Bot</span>
+                    <span class="badge">Networking</span>
+                </div>
+            </div>
+
+            <!-- PROYEK 3 -->
+            <div class="project-card">
+                <div>
+                    <div class="project-icon">📰</div>
+                    <h2 class="project-title">Daily Tech News Aggregator</h2>
+                    <p class="project-desc">Sistem otomatis pemantau berita teknologi terbaru yang melakukan data fetching dari berbagai sumber API resmi dan menampilkan update secara terpusat.</p>
+                </div>
+                <div class="tech-stack">
+                    <span class="badge">Node.js</span>
+                    <span class="badge">API Fetching</span>
+                    <span class="badge">Automation</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>
